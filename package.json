@@ -1,8 +1,8 @@
 {
-  "name": "lasers",
+  "name": "server-info",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://fosemberg.github.io/lasers",
+  "homepage": "https://fosemberg.github.io/server-info",
   "dependencies": {
     "@types/react-redux": "^7.0.6",
     "node-sass-chokidar": "^1.3.4",
