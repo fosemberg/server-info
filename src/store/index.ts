@@ -2,7 +2,7 @@ import {applyMiddleware, combineReducers, compose, createStore} from 'redux'
 import thunk from 'redux-thunk'
 import {IParam, params} from './params'
 
-const stateUrl = 'https://server-info-ea885.firebaseio.com/.json'
+export const stateUrl = 'https://server-info-ea885.firebaseio.com/.json'
 
 export interface IStoreState {
   params: IParam[],
