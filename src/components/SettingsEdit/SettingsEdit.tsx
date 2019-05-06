@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import './SettingsEdit.css';
 
 interface IProps {
@@ -45,6 +45,11 @@ const SettingsEdit = (
               defaultValue={timeDelay.toString()}
             />
           </Form.Group>
+          <Button
+            variant="outline-secondary"
+          >
+            Сохранить
+          </Button>
         </Form>
       </div>
     </div>

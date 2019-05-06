@@ -1,4 +1,5 @@
 import React from 'react';
+import {Button} from "react-bootstrap";
 import {stateUrl} from "../../store";
 import './LoadButton.css';
 
@@ -6,12 +7,13 @@ import './LoadButton.css';
 const LoadButton = () => {
   return (
     <div className='load-button'>
-      <a
-        className='load-button_link'
+      <Button
+        variant="outline-secondary"
         href={stateUrl}
-        download={true}
-        target="_blank"
-      >Экспортировать данные</a>
+        type='button'
+      >
+        Экспортировать данные
+      </Button>
     </div>
   );
 };

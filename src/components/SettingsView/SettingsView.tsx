@@ -43,7 +43,7 @@ const SettingsView = (
         <InputGroup size="sm" className="mb-3">
           <InputGroup.Prepend>
             <InputGroup.Text>
-              Время заддержки
+              Текущее время заддержки
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
