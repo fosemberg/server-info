@@ -1,8 +1,10 @@
 import React from 'react';
+import {FormControl, InputGroup} from "react-bootstrap";
+import './SettingsView.css';
 
 interface IProps {
-  connectionStatus?: string;
-  runStatus?: string;
+  connectionStatus?: 'off' | 'on';
+  runStatus?: 'off' | 'on';
   timeDelay?: number;
 }
 
@@ -15,9 +17,41 @@ const SettingsView = (
 ) => {
   return (
     <div className='settings-view'>
-      <div>Статус соединения: <span>{connectionStatus}</span></div>
-      <div>Текущий статус выполнения: <span>{runStatus}</span></div>
-      <div>Время заддержки: <span>{timeDelay}</span></div>
+      <div className='container'>
+        <InputGroup size="sm" className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>
+              Статус соединения
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            value={connectionStatus}
+            disabled={true}
+          />
+        </InputGroup>
+        <InputGroup size="sm" className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>
+              Текущий статус выполнения
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            value={runStatus}
+            disabled={true}
+          />
+        </InputGroup>
+        <InputGroup size="sm" className="mb-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>
+              Время заддержки
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl
+            value={timeDelay.toString()}
+            disabled={true}
+          />
+        </InputGroup>
+      </div>
     </div>
   );
 };

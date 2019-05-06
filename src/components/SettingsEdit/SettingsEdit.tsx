@@ -1,4 +1,6 @@
 import React from 'react';
+import {Form} from "react-bootstrap";
+import './SettingsEdit.css';
 
 interface IProps {
   ip?: string;
@@ -15,20 +17,36 @@ const SettingsEdit = (
 ) => {
   return (
     <div className='settings-edit'>
-      <form>
-        <div>
-          <label>Подключиться</label>
-          <input type='text' value={ip}/>
-        </div>
-        <div>
-          <label>Работает</label>
-          <input type='checkbox' checked={isWorking}/>
-        </div>
-        <div>
-          <label>Задержка</label>
-          <input type='text' value={timeDelay}/>
-        </div>
-      </form>
+      <div className='container'>
+        <Form>
+          <Form.Group>
+            <Form.Label>
+              Подключиться
+            </Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="192.168.1.1"
+              defaultValue={ip}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Check
+              type='checkbox'
+              label='Работает'
+              defaultChecked={isWorking}
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>
+              Задержка
+            </Form.Label>
+            <Form.Control
+              placeholder="60"
+              defaultValue={timeDelay.toString()}
+            />
+          </Form.Group>
+        </Form>
+      </div>
     </div>
   );
 };
