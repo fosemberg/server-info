@@ -8,7 +8,7 @@ import SettingsPage from "./pages/SettingsPage";
 class App extends React.Component {
   public render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <div>
           <ServerInfoNavbar/>
           <div>
