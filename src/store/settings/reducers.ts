@@ -2,13 +2,13 @@ import {IAction} from "../../utils/redux";
 import {SET_IP, SET_IS_WORKING, SET_TIME_DELAY} from "./constants";
 import {ISettings} from "./stateDeclaration";
 
-const defaultState: ISettings = {
-  ip: '-',
+export const defaultSettingsState: ISettings = {
+  ip: 'example',
   isWorking: true,
   timeDelay: 2,
 }
 
-export const settings = (state = defaultState, action: IAction) => {
+export const settings = (state = defaultSettingsState, action: IAction) => {
   switch (action.type) {
     case SET_IP:
       return {
