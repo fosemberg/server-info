@@ -7,6 +7,7 @@ export default connect(
   (state: IStoreState) =>
     ({
       params: [...state.params],
+      isWorking: state.settings.isWorking,
       timeDelay: state.settings.timeDelay,
     }),
   {

@@ -6,11 +6,13 @@ import './Params.css';
 interface IParams {
   params: IParam[];
   synchronize: () => void;
+  isWorking?: boolean;
   timeDelay?: number;
 }
 
 class Params extends React.PureComponent<IParams, {}> {
   public static defaultProps: Partial<IParams> = {
+    isWorking: true,
     timeDelay: 2,
   }
 
@@ -38,28 +40,33 @@ class Params extends React.PureComponent<IParams, {}> {
 
   public render() {
     const {
-      props: {params}
+      props: {
+        params,
+        isWorking,
+      }
     } = this
 
-    return <table className='params'>
-      <thead className='params__header'>
-      <tr>
-        <td className='params__header_main'>ПАРАМЕТР</td>
-        <td className='params__header_value'>ЗНАЧЕНИЕ</td>
-        <td/>
-        <td className='params__header_value'>ЗНАЧЕНИЕ ВЛОЖ.</td>
-        <td/>
-        <td/>
-      </tr>
-      </thead>
-      <tbody>
-      {
-        params
-          .filter(({groupId}) => groupId && groupId.includes(1))
-          .map((param, key) => <Param {...{key}} {...param}/>)
-      }
-      </tbody>
-    </table>
+    return isWorking
+      ? <table className='params'>
+        <thead className='params__header'>
+        <tr>
+          <td className='params__header_main'>ПАРАМЕТР</td>
+          <td className='params__header_value'>ЗНАЧЕНИЕ</td>
+          <td/>
+          <td className='params__header_value'>ЗНАЧЕНИЕ ВЛОЖ.</td>
+          <td/>
+          <td/>
+        </tr>
+        </thead>
+        <tbody>
+        {
+          params
+            .filter(({groupId}) => groupId && groupId.includes(1))
+            .map((param, key) => <Param {...{key}} {...param}/>)
+        }
+        </tbody>
+      </table>
+      : <div className='params params_not-working'>Получение данных с сервера выключено</div>
   }
 
   private secondToMilliSecond(sec?: number) {

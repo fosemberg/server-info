@@ -4,6 +4,13 @@
   flex-direction: column;
   word-break: break-word;
 
+  &_not-working {
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    height: calc(100vh - 116px);
+  }
+
   &__header {
     background: rgb(239, 240, 237);
     width: 100%;
