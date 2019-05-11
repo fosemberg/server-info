@@ -7,6 +7,8 @@ interface IProps {
   isWorking?: boolean;
   timeDelay?: number;
 
+  setIp: (ip: string) => void;
+  setIsWorking: (isWorking: boolean) => void;
   setTimeDelay: (timeDelay: number) => void;
 }
 
@@ -21,7 +23,6 @@ class SettingsEdit extends React.PureComponent<IProps, IState> {
     ip: '-',
     isWorking: false,
     timeDelay: 2,
-    setTimeDelay: (timeDelay) => undefined
   }
 
   constructor(props: IProps) {
@@ -54,6 +55,7 @@ class SettingsEdit extends React.PureComponent<IProps, IState> {
                 type="text"
                 placeholder="192.168.1.1"
                 defaultValue={ip}
+                onChange={this.handleIpChange}
               />
             </Form.Group>
             <Form.Group>
@@ -61,6 +63,7 @@ class SettingsEdit extends React.PureComponent<IProps, IState> {
                 type='checkbox'
                 label='Работает'
                 defaultChecked={isWorking}
+                onChange={this.handleIsWorkingChange}
               />
             </Form.Group>
             <Form.Group>
@@ -88,12 +91,26 @@ class SettingsEdit extends React.PureComponent<IProps, IState> {
   private onSave = () => {
     const {
       state: {
-        // ip,
-        // isWorking,
+        ip,
+        isWorking,
         timeDelay,
       }
     } = this
+    this.props.setIp(ip)
+    this.props.setIsWorking(isWorking)
     this.props.setTimeDelay(timeDelay)
+  }
+
+  private handleIpChange = (event: any) => {
+    this.setState({
+      ip: event.target.value
+    });
+  }
+
+  private handleIsWorkingChange = (event: any) => {
+    this.setState({
+      isWorking: event.target.checked
+    });
   }
 
   private handleTimeDelayChange = (event: any) => {
