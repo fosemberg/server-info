@@ -1,15 +1,14 @@
 import {connect} from "react-redux";
 import {IStoreState} from "../../store";
-import {synchronize} from "../../store/params";
-import ui from './Params';
+import {setTimeDelay} from "../../store/settings";
+import ui from './SettingsEdit';
 
 export default connect(
   (state: IStoreState) =>
     ({
-      params: [...state.params],
       timeDelay: state.settings.timeDelay,
     }),
   {
-    synchronize,
+    setTimeDelay,
   }
 )(ui)

@@ -1,0 +1,1 @@
+export const SET_TIME_DELAY = "SET_TIME_DELAY"
