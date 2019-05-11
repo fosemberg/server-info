@@ -30,6 +30,7 @@ class Params extends React.PureComponent<IParams, {}> {
   }
 
   public componentDidMount(): void {
+    this.props.synchronize()
     this.synchronizeInterval = setInterval(this.props.synchronize, this.secondToMilliSecond(this.props.timeDelay))
   }
 

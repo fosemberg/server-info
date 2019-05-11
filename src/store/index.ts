@@ -4,8 +4,8 @@ import {IParam, params} from './params'
 import {ISettings, settings} from  './settings'
 import {defaultSettingsState} from "./settings/reducers";
 
-// export const stateUrl = 'https://server-info-ea885.firebaseio.com'
-export const stateUrl = 'params'
+export const stateUrl = 'https://server-info-ea885.firebaseio.com'
+// export const stateUrl = 'params'
 
 export interface IStoreState {
   params: IParam[],
@@ -25,7 +25,7 @@ const storeFactory = (initialState: IStoreState) =>
   )
 
 export const fetchStateJson = (ip: string) =>
-  fetch(`${stateUrl}/${ip}.json`)
+  fetch(`${stateUrl}/${ip.replace(/\./g, "_")}.json`)
     .then(res => res.json())
 
 export const getStore = () =>
