@@ -1,15 +1,16 @@
 import React from 'react';
 import {Nav, Navbar} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 const ServerInfoNavbar = () => {
   return (
     <Navbar collapseOnSelect={true} expand="lg" bg="light" variant="light">
-      <Navbar.Brand href={`${process.env.PUBLIC_URL}/`}>Server info</Navbar.Brand>
+      <Link className="navbar-brand" to="/">Server info</Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
       <Navbar.Collapse>
         <Nav className="mr-auto">
-          <Nav.Link href={`${process.env.PUBLIC_URL}/`}>Параметры сервера</Nav.Link>
-          <Nav.Link href={`${process.env.PUBLIC_URL}/settings`}>Настройки</Nav.Link>
+          <Link className="nav-link" to="/">Параметры сервера</Link>
+          <Link className="nav-link" to="/settings">Настройки</Link>
         </Nav>
         <Nav>
           <Nav.Link href="http://fosemberg2.beget.tech/register/">Регистрация</Nav.Link>
