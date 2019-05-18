@@ -1,12 +1,12 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
 import {stateUrl} from "../../store";
-import './LoadButton.css';
+import './ExportButton.css';
 
 
-const LoadButton = () => {
+const ExportButton = () => {
   return (
-    <div className='load-button'>
+    <div className='export-button'>
       <Button
         variant="outline-secondary"
         href={stateUrl}
@@ -18,4 +18,4 @@ const LoadButton = () => {
   );
 };
 
-export default LoadButton;
+export default ExportButton;
