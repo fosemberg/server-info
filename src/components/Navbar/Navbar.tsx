@@ -12,10 +12,6 @@ const ServerInfoNavbar = () => {
           <Link className="nav-link" to="/">Параметры сервера</Link>
           <Link className="nav-link" to="/settings">Настройки</Link>
         </Nav>
-        <Nav>
-          <Nav.Link href="http://fosemberg2.beget.tech/register/">Регистрация</Nav.Link>
-          <Nav.Link href="http://fosemberg2.beget.tech/wp-login.php">Войти</Nav.Link>
-        </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
