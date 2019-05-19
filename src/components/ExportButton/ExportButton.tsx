@@ -3,8 +3,16 @@ import {Button} from "react-bootstrap";
 import {stateUrl} from "../../store";
 import './ExportButton.css';
 
-class ExportButton extends React.PureComponent<{}, {}> {
+interface IProps {
+  ip: string;
+}
+
+class ExportButton extends React.PureComponent<IProps, {}> {
   private jsonpCallbackName = 'getExportJson'
+
+  constructor(props: IProps) {
+    super(props)
+  }
 
   public componentDidMount() {
     (window as any)[this.jsonpCallbackName] = (exportObj: any) => {
@@ -37,9 +45,15 @@ class ExportButton extends React.PureComponent<{}, {}> {
   }
 
   private download = () => {
+    const {
+      props: {
+        ip
+      }
+    } = this
+
     // jsonp download
     const script = document.createElement("script");
-    script.src = `${stateUrl}/.json?callback=${this.jsonpCallbackName}`;
+    script.src = `${stateUrl}/${ip}.json?callback=${this.jsonpCallbackName}`;
     script.async = true;
     document.body.appendChild(script);
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import ExportButton from "../components/LoadButton/ExportButton"
+import ExportButton from "../components/ExportButton/container"
 import Params from "../components/Params/container"
 
 const ParamsPage = () => {
