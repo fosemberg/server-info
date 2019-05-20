@@ -6,5 +6,7 @@ export default connect(
   (state: IStoreState) =>
     ({
       ip: state.settings.ip,
+      isWorking: state.settings.isWorking,
+      isConnected: state.settings.isConnected,
     })
 )(ui)

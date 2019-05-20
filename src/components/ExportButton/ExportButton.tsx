@@ -5,13 +5,22 @@ import './ExportButton.css';
 
 interface IProps {
   ip: string;
+  isWorking: boolean;
+  isConnected: boolean;
 }
 
-class ExportButton extends React.PureComponent<IProps, {}> {
+interface IState {
+  isActive: boolean;
+}
+
+class ExportButton extends React.PureComponent<IProps, IState> {
   private jsonpCallbackName = 'getExportJson'
 
   constructor(props: IProps) {
     super(props)
+    this.state = {
+      isActive: props.isWorking && props.isConnected,
+    }
   }
 
   public componentDidMount() {
@@ -27,15 +36,31 @@ class ExportButton extends React.PureComponent<IProps, {}> {
     }
   }
 
+  public componentWillReceiveProps(nextProps: Readonly<IProps>, nextContext: any): void {
+    const {props} = this
+    if ((props.isWorking !== nextProps.isWorking) || (props.isConnected !== nextProps.isConnected)) {
+      this.setState({
+        isActive: props.isWorking && props.isConnected,
+      })
+    }
+  }
+
   public render() {
+    const {
+      download,
+      state: {
+        isActive,
+      }
+    } = this
     return (
       <div className='export-button'>
         <a
-          onClick={this.download}
+          onClick={isActive ? download : x=>x}
         >
           <Button
             variant="outline-secondary"
             type='button'
+            disabled={!isActive}
           >
             Экспортировать данные
           </Button>

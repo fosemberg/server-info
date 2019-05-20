@@ -1,5 +1,6 @@
 import React from 'react';
-import {Button, Form} from "react-bootstrap";
+import {Form} from "react-bootstrap";
+import {defaultTimeDelay} from "../../store/settings/reducers";
 import './SettingsEdit.css';
 
 interface IProps {
@@ -24,7 +25,7 @@ class SettingsEdit extends React.PureComponent<IProps, IState> {
   public static defaultProps: Partial<IProps> = {
     ip: '-',
     isWorking: false,
-    timeDelay: 2,
+    timeDelay: defaultTimeDelay,
   }
 
   constructor(props: IProps) {
@@ -77,53 +78,39 @@ class SettingsEdit extends React.PureComponent<IProps, IState> {
                 Задержка
               </Form.Label>
               <Form.Control
-                placeholder="60"
+                placeholder={defaultTimeDelay.toString()}
                 defaultValue={timeDelay!.toString()}
                 onChange={this.handleTimeDelayChange}
               />
             </Form.Group>
-            <Button
-              variant="outline-secondary"
-              onClick={this.onSave}
-            >
-              Сохранить
-            </Button>
           </Form>
         </div>
       </div>
     );
   };
 
-  private onSave = () => {
-    const {
-      state: {
-        ip,
-        isWorking,
-        timeDelay,
-      }
-    } = this
-    this.props.setIp(ip)
-    this.props.setIsWorking(isWorking)
-    this.props.setTimeDelay(timeDelay)
-  }
-
   private handleIpChange = (event: any) => {
     const {value: ip} = event.target
     this.setState({
       ip
     });
+    this.props.setIp(ip)
   }
 
   private handleIsWorkingChange = (event: any) => {
+    const {checked: isWorking} = event.target
     this.setState({
-      isWorking: event.target.checked
+      isWorking
     });
+    this.props.setIsWorking(isWorking)
   }
 
   private handleTimeDelayChange = (event: any) => {
+    const {value: timeDelay = 1} = event.target
     this.setState({
-      timeDelay: event.target.value
+      timeDelay
     });
+    this.props.setTimeDelay(timeDelay)
   }
 }
 

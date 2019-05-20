@@ -1,5 +1,6 @@
 import React from 'react';
 import {FormControl, InputGroup} from "react-bootstrap";
+import {defaultTimeDelay} from "../../store/settings/reducers";
 import './SettingsView.css';
 
 interface IProps {
@@ -12,7 +13,7 @@ const SettingsView = (
   {
     isConnected = false,
     isWorking = false,
-    timeDelay = 2
+    timeDelay = defaultTimeDelay,
   }: IProps
 ) => {
   return (
@@ -47,7 +48,7 @@ const SettingsView = (
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
-            value={timeDelay.toString()}
+            value={timeDelay ? timeDelay.toString() : defaultTimeDelay.toString()}
             disabled={true}
           />
         </InputGroup>
