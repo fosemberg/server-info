@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
 import {IStoreState} from "../../store";
-import {setIp, setIsWorking, setTimeDelay} from "../../store/settings";
+import {checkConnectionStatus, setIp, setIsWorking, setTimeDelay} from "../../store/settings";
 import ui from './SettingsEdit';
 
 export default connect(
@@ -14,5 +14,6 @@ export default connect(
     setIp,
     setIsWorking,
     setTimeDelay,
+    checkConnectionStatus,
   }
 )(ui)

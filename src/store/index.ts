@@ -24,8 +24,8 @@ const storeFactory = (initialState: IStoreState) =>
     )
   )
 
-export const fetchStateJson = (ip: string) =>
-  fetch(`${stateUrl}/${ip.replace(/\./g, "_")}.json`)
+export const fetchStateJson = (ip: string, urlParams = '') =>
+  fetch(`${stateUrl}/${ip.replace(/\./g, "_")}.json${urlParams && '?' + urlParams}`)
     .then(res => res.json())
 
 export const getStore = () =>

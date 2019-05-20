@@ -10,6 +10,8 @@ interface IProps {
   setIp: (ip: string) => void;
   setIsWorking: (isWorking: boolean) => void;
   setTimeDelay: (timeDelay: number) => void;
+
+  checkConnectionStatus: () => void;
 }
 
 interface IState {
@@ -102,8 +104,9 @@ class SettingsEdit extends React.PureComponent<IProps, IState> {
   }
 
   private handleIpChange = (event: any) => {
+    const {value: ip} = event.target
     this.setState({
-      ip: event.target.value
+      ip
     });
   }
 

@@ -3,14 +3,14 @@ import {FormControl, InputGroup} from "react-bootstrap";
 import './SettingsView.css';
 
 interface IProps {
-  connectionStatus?: boolean;
+  isConnected?: boolean;
   isWorking?: boolean;
   timeDelay?: number;
 }
 
 const SettingsView = (
   {
-    connectionStatus = false,
+    isConnected = false,
     isWorking = false,
     timeDelay = 2
   }: IProps
@@ -25,7 +25,7 @@ const SettingsView = (
             </InputGroup.Text>
           </InputGroup.Prepend>
           <FormControl
-            value={connectionStatus ? 'on' : 'off'}
+            value={isConnected ? 'on' : 'off'}
             disabled={true}
           />
         </InputGroup>
