@@ -8,6 +8,8 @@ export default connect(
     ({
       params: [...state.params],
       isWorking: state.settings.isWorking,
+      isConnected: state.settings.isConnected,
+      ip: state.settings.ip,
       timeDelay: state.settings.timeDelay,
     }),
   {

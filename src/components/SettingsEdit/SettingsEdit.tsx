@@ -11,7 +11,7 @@ interface IProps {
   setIsWorking: (isWorking: boolean) => void;
   setTimeDelay: (timeDelay: number) => void;
 
-  checkConnectionStatus: () => void;
+  checkConnectionStatus: (ip?: string) => void;
 }
 
 interface IState {
@@ -35,6 +35,10 @@ class SettingsEdit extends React.PureComponent<IProps, IState> {
       isWorking: props.isWorking!,
       timeDelay: props.timeDelay!,
     }
+  }
+
+  public componentDidMount(): void {
+    this.props.checkConnectionStatus();
   }
 
   public render() {

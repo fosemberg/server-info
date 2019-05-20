@@ -7,6 +7,8 @@ interface IParams {
   params: IParam[];
   synchronize: () => void;
   isWorking?: boolean;
+  isConnected?: boolean;
+  ip?: string;
   timeDelay?: number;
 }
 
@@ -44,29 +46,33 @@ class Params extends React.PureComponent<IParams, {}> {
       props: {
         params,
         isWorking,
+        isConnected,
+        ip,
       }
     } = this
 
     return isWorking
-      ? <table className='params'>
-        <thead className='params__header'>
-        <tr>
-          <td className='params__header_main'>ПАРАМЕТР</td>
-          <td className='params__header_value'>ЗНАЧЕНИЕ</td>
-          <td/>
-          <td className='params__header_value'>ЗНАЧЕНИЕ ВЛОЖ.</td>
-          <td/>
-          <td/>
-        </tr>
-        </thead>
-        <tbody>
-        {
-          params
-            .filter(({groupId}) => groupId && groupId.includes(1))
-            .map((param, key) => <Param {...{key}} {...param}/>)
-        }
-        </tbody>
-      </table>
+      ? isConnected
+        ? <table className='params'>
+          <thead className='params__header'>
+          <tr>
+            <td className='params__header_main'>ПАРАМЕТР</td>
+            <td className='params__header_value'>ЗНАЧЕНИЕ</td>
+            <td/>
+            <td className='params__header_value'>ЗНАЧЕНИЕ ВЛОЖ.</td>
+            <td/>
+            <td/>
+          </tr>
+          </thead>
+          <tbody>
+          {
+            params
+              .filter(({groupId}) => groupId && groupId.includes(1))
+              .map((param, key) => <Param {...{key}} {...param}/>)
+          }
+          </tbody>
+        </table>
+        : <div className='params params_not-working'>Невозможно получить данные с ip: {ip}</div>
       : <div className='params params_not-working'>Получение данных с сервера выключено</div>
   }
 

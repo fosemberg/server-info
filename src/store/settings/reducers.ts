@@ -4,7 +4,7 @@ import {ISettings} from "./stateDeclaration";
 
 export const defaultSettingsState: ISettings = {
   ip: 'example',
-  isConnected: false,
+  isConnected: true,
   isWorking: true,
   timeDelay: 2,
 }
