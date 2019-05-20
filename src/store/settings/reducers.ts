@@ -1,5 +1,5 @@
 import {IAction} from "../../utils/redux";
-import {CHECK_CONNECTION_STATUS, SET_IP, SET_IS_WORKING, SET_TIME_DELAY} from "./constants";
+import {SET_IP, SET_IS_CONNECTED, SET_IS_WORKING, SET_TIME_DELAY} from "./constants";
 import {ISettings} from "./stateDeclaration";
 
 export const defaultSettingsState: ISettings = {
@@ -11,7 +11,7 @@ export const defaultSettingsState: ISettings = {
 
 export const settings = (state = defaultSettingsState, action: IAction) => {
   switch (action.type) {
-    case CHECK_CONNECTION_STATUS:
+    case SET_IS_CONNECTED:
       return {
         ...state,
         isConnected: action.payload.isConnected

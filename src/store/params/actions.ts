@@ -1,6 +1,6 @@
 import {IAction} from "../../utils/redux";
 import {fetchStateJson, IStoreState} from "../index";
-import {checkConnectionStatusAction} from "../settings/actions";
+import {setIsConnectedAction} from "../settings/actions";
 import {SYNCHRONIZE} from "./constants";
 
 export const synchronize = () => (dispatch: any, getState: () => IStoreState) => {
@@ -8,10 +8,10 @@ export const synchronize = () => (dispatch: any, getState: () => IStoreState) =>
     .then(
       json => {
         if (json) {
-          dispatch(checkConnectionStatusAction(true))
+          dispatch(setIsConnectedAction(true))
           dispatch(synchronizeAction(json))
         } else {
-          dispatch(checkConnectionStatusAction(false))
+          dispatch(setIsConnectedAction(false))
         }
       }
     )

@@ -1,19 +1,19 @@
 import {IAction} from "../../utils/redux";
 import {fetchStateJson, IStoreState} from "../index";
-import {CHECK_CONNECTION_STATUS, SET_IP, SET_IS_WORKING, SET_TIME_DELAY} from "./constants";
+import {SET_IP, SET_IS_CONNECTED, SET_IS_WORKING, SET_TIME_DELAY} from "./constants";
 
 export const checkConnectionStatus = (ip?: string) => (dispatch: any, getState: () => IStoreState) => {
   fetchStateJson(ip ? ip : getState().settings.ip, 'shallow=true')
     .then(
       json => {
-        dispatch(checkConnectionStatusAction(!!json))
+        dispatch(setIsConnectedAction(!!json))
       }
     )
 }
 
-export const checkConnectionStatusAction = (isConnected: boolean): IAction =>
+export const setIsConnectedAction = (isConnected: boolean): IAction =>
   ({
-    type: CHECK_CONNECTION_STATUS,
+    type: SET_IS_CONNECTED,
     payload: {
       isConnected
     }
